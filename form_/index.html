@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1 class="valform">FORM</h1>
+</header>
+
+<form method="" action="" name="myform" >
+<div class="form_">
+    <div>  
+      <label for="name">NAME</label><br><br>
+      <input type="text" id="name" name="fname" placeholder="Enter your name" onkeyup="validateName()" ><br><b><span class="formerror" id="name-error"><br></span></b>
+      
+      
+    </div>
+    <BR>
+    <div>
+        <label for="email">EMAIL</label><br><br>
+        <input type="text" id="email" name="email" placeholder="Enter your email" onkeyup="validateEmail()" ><br><b><span class="formerror" id="email-error"> </span></b>
+    </div>
+   <BR>
+        <label for="gender">GENDER</label><br><br>
+        <strong class="mygender" id="gendr" onkeyup="validateGender()" >
+       <input type="radio" name="gndr" id="male" value="Male">Male</input>
+        <input type="radio" name="gndr" id="female" value="Female">Female</input>
+        <input type="radio"name="gndr" id="other" value="Other">Other </input>
+        
+    </strong>
+    <b><span class="formerror" id="gender-error"> <br></span></b>
+    <BR>
+    <br><br>
+   
+    <div>
+        <label for="phone">PHONE NUMBER</label><br><br>
+       <input type="text" id="phone" placeholder="Enter your phone number" name="phone" onkeyup="validatePhone()" >
+       <br><b><span class="formerror" id="phone-error"> </span></b>
+    </div><br>
+    <div>
+        <label for="DOB">DATE OF BIRTH</label><br><br>
+        <input id="DOB" name="dob" type="date">
+    </div>
+    <BR>
+    <div>
+        <label for="password">PASSWORD</label><br><br>
+       <input type="password" id="pwd"  placeholder="Enter your password " name="pwd" onkeyup="validatePassword()">
+      <br><b><span class="formerror" id="password-error"> </span></b>
+    </div>
+    <BR>
+    <div>
+        <label for="confirmpassword">CONFIRM PASSWORD</label><br><br>
+       <input type="password" id="cpass" placeholder="Enter confirm password" name="cnfrmpwd" onkeyup="validateCpassword()">
+      <br> <b><span class="formerror" id="cpassword-error"> </span></b>
+    </div>
+    <BR>
+    
+    <div class="subreset" >
+        <input  type="submit"  id="btn" name="submit" value="SUBMIT" onclick="showalert()"><input  type="reset"  id="btn_"name="submit" value="RESET">
+       
+    </div>
+
+    </div>
+
+</div>
+ 
+</form>
+<script >
+
+function validateName(){
+    var nameerror = document.getElementById('name-error');
+    var mname= document.getElementById('name').value;
+    if(mname.length==0){
+        nameerror.innerHTML="*Name is required";
+        return false;
+    }
+    if(!mname.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
+        nameerror.innerHTML="*Write full name";
+        return false;
+    }
+   nameerror.innerHTML="";
+    return true;
+}
+
+function validateEmail(){
+    var emailerror=document.getElementById('email-error');
+    var gmail=document.getElementById('email').value;
+    
+    if(gmail.length==0)
+    {
+        emailerror.innerHTML="*Email is required";
+        return false;
+    }
+   
+     if(!gmail.match(/^[A-Za-z]*\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/))
+    {
+      emailerror.innerHTML="*Email is invalid";
+        return false;
+    }
+        emailerror.innerHTML="";
+        return true;
+    }
+function validatePhone(){
+    var phoneerror= document.getElementById('phone-error');
+    var phone=document.getElementById('phone').value;
+    if(phone.length==0){
+        phoneerror.innerHTML='*Phone no is required';
+        return false;
+    }
+    if(phone.length!=10){
+        phoneerror.innerHTML='*Phone no should have 10 digits';
+        return false;
+    }
+   if(!phone.match(/^[0-9]{10}$/)){
+        phoneerror.innerHTML='*Enter digits only';
+        return false;
+    }
+    
+    nameerror.innerHTML="";
+    return true;
+}
+
+    
+    function validatePassword(){
+        var passworderror=document.getElementById('password-error');
+        var pass=document.getElementById('pwd').value;
+        if(pass=="")
+        {
+           passworderror.innerHTML="*Please enter password"  ;
+        return false;  
+        }
+        if(pass.length<8)
+        {
+           passworderror.innerHTML="*Please enter at least 8 characters"  ;
+        return false;   
+    
+        }
+       passworderror.innerHTML="";
+        return true;
+    function validateCpassword(){
+        var pass=document.getElementById('pwd').value;
+        var passworderror=document.getElementById('password-error');
+        var cpassworderror=document.getElementById('cpassword-error');
+        var cpass=document.getElementById("cpass").value;
+        
+        if(cpass=="")
+        {
+            cpassworderror.innerHTML="Please enter confirm password";
+            return false;
+        }
+        cpassworderror.innerHTML="";
+        return true;
+    }
+    function validateGender()
+    {
+        var gendererror=document.getElementById('gender-error');
+        var g= document.getElementById('gendr').value;
+        for(i=0;i<g.length;i++)
+        {
+            if(g[i].checked==true)
+              return true;
+        }
+        gendererror.innerHTML="*Please select anyone";
+        return false;
+    }
+
+    function showalert()
+        {
+           alert("Submitted successfully");
+        }
+    
+    }
+</script>
+</body>
+</html>
+    
+    
+
+
+
+
+
+
+
+    
+
+
+
+
